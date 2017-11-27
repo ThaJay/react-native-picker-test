@@ -1,0 +1,3 @@
+rootProject.name = 'pickertest'
+
+include ':app'
