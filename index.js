@@ -36,6 +36,7 @@ class App extends Component {
       <Picker
         selectedValue={this.state.value}
         onValueChange={this.onValueChange}
+        mode='dropdown'
       >
         {[...this.makeNodes()]}
       </Picker>
