@@ -1,47 +1,20 @@
-import React, { Component } from 'react'
-import {AppRegistry, Picker} from 'react-native'
+import React, {Component} from 'react'
+import {AppRegistry}      from 'react-native'
+import {Provider}         from 'react-redux'
+import store from './redux.js'
 
-class App extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {value:''}
-  }
+// import Root from './leftright.js'
 
-  onValueChange = value => {
-    this.setState({value})
-    console.log(value, this.state.value)
-  }
+import App from './app.js'
 
-  values = [
-    'first value',
-    'second value',
-    'third value',
-    'fourth value'
-  ]
-
-  makeNodes = function * () {
-    for (let i in this.values) {
-      yield (
-        <Picker.Item
-          label={this.values[i]}
-          key={i}
-          value={i}
-        />
-      )
-    }
-  }
-
+class Root extends Component {
   render () {
     return (
-      <Picker
-        selectedValue={this.state.value}
-        onValueChange={this.onValueChange}
-        mode='dropdown'
-      >
-        {[...this.makeNodes()]}
-      </Picker>
+      <Provider store={store}>
+        <App />
+      </Provider>
     )
   }
 }
 
-AppRegistry.registerComponent('pickertest', () => App)
+AppRegistry.registerComponent('pickertest', () => Root)
